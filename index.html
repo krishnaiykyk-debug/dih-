@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Boys Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quiz-container {
+            background-color: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h2 {
+            color: #38bdf8;
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        button {
+            width: 100%;
+            background-color: #38bdf8;
+            color: #0f172a;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0ea5e9;
+        }
+        /* Jumpscare Screen */
+        #jumpscare {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: red;
+            color: white;
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 4rem;
+            font-weight: bold;
+            animation: shake 0.1s infinite;
+        }
+        @keyframes shake {
+            0% { transform: translate(2px, 2px); }
+            50% { transform: translate(-2px, -2px); }
+            100% { transform: translate(2px, -2px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container" id="quizBox">
+        <h2>The Ultimate Vibe Check</h2>
+        
+        <div class="question">
+            <p>1. Is Aibal have round cheeks?</p>
+            <label><input type="radio" name="q1" value="yes"> Yes</label>
+            <label><input type="radio" name="q1" value="no"> No</label>
+        </div>
+
+        <div class="question">
+            <p>2. Is Kamal cataholic?</p>
+            <label><input type="radio" name="q2" value="yes"> Yes</label>
+            <label><input type="radio" name="q2" value="no"> No</label>
+        </div>
+
+        <div class="question">
+            <p>3. Is Dakshit nickname dip stick?</p>
+            <label><input type="radio" name="q3" value="yes"> Yes</label>
+            <label><input type="radio" name="q3" value="no"> No</label>
+        </div>
+
+        <button onclick="checkAnswers()">Submit Answers</button>
+    </div>
+
+    <!-- Jumpscare Overlay -->
+    <div id="jumpscare">
+        jibbuty ahhhhhhhhhhhhhhhh
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+            const q3 = document.querySelector('input[name="q3"]:checked');
+
+            // Adjust these to whatever the "correct" answers are supposed to be!
+            // Right now it checks if all three are answered. If you want specific answers to trigger it, change the conditions below.
+            if (q1 && q2 && q3) {
+                // Trigger jumpscare no matter what they pick for the meme, or set specific right/wrong values
+                document.getElementById('jumpscare').style.display = 'flex';
+                document.getElementById('quizBox').style.display = 'none';
+            } else {
+                alert("Answer all questions first!");
+            }
+        }
+    </script>
+
+</body>
+</html>
